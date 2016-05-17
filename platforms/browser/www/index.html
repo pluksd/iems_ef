@@ -78,6 +78,9 @@
                   </div>
                 </form>
             </div>
+        </div>  <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
         </div>
     </div>
     <footer class="page-footer grey lighten-2">
@@ -93,7 +96,10 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript">
+        $(document).ready(function() {
         app.initialize();
+
+      });
     </script>
 </body>
 
