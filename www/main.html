@@ -47,7 +47,7 @@
     <title>Ionics EMS, INC.</title>
 </head>
 
-<body class="grey lighten-2">
+<body class="grey lighten-2" ng-app="iems_ef" >
                 <ul class="side-nav" id="mobile-demo">
                     <li>
                     <div class="card">
@@ -56,7 +56,7 @@
                         </div>
                         <div class="card-content">
                           <span class="card-title activator grey-text text-darken-4">Franz Delomen</span>
-                          <p><a href="index.html" class="waves-effect waves-light"><i class="material-icons left">&#xE8AC;</i>Sign Out</a></p>
+                          <a href="index.html" class="btn red lighten-1 waves-effect waves-light"><i class="material-icons left">&#xE8AC;</i> Sign Out</a>
                         </div>
                         <div class="card-reveal">
                           <span class="card-title grey-text text-darken-4">Franz Delomen</span>
@@ -68,54 +68,119 @@
                     <li><a href="collapsible.html">Javascript</a></li>
                     <li><a href="mobile.html">Mobile</a></li>
                 </ul>
-<div class="wrapper" ng-app="iems_ef" ng-controller="datactrl">
-    <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper blue-grey">
-                <ul>
-                <li><a href="#" data-activates="mobile-demo" class="button-collapse blue-grey darken-1 "><i class="material-icons">&#xE5D2;</i></a></li>
-                <li><a href="#" data-activates="mobile-demo" class="button-collapse blue-grey darken-1 ">e-Factory</a></li>
-                </ul>
-                <ul class="left hide-on-med-and-down">
-                  <li class="blue-grey darken-1"><a href="#" class="menu waves-effect waves-light"><i class="material-icons left">&#xE5D2;</i> e-Factory</a></li>
-                </ul>
-                <ul class="right">
-                    <li>
-                        <a><i class="material-icons">&#xE8B8;</i></a>
-                    </li>
-                </ul> 
-            </div>
-        </nav>
-    </div>
-    <div class="container">
-      <div class="row animated fadeInUp" ng-repeat="line in prodLines">
-        <div class="col s12">
-          <div class="card white flow-text">
-            <div class="card-content">
-              <span class="card-title">{{ line.name }}</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    <div class="fixed-action-btn">
-        <a class="btn btn-floating btn-large waves-effect waves-light blue-grey right animated zoomIn tooltiped"
-        data-position="top" data-delay="50" data-tooltip="Sort / Filter"><i class="material-icons">&#xE5D3;</i></a>
-    </div>
-    </div>  <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-</div>
-
+                <div class="wrapper" ng-controller="datactrl">
+                    <div id="factoryModal" class="modal">
+                      <div class="modal-content">
+                        <h4><i class="material-icons left">&#xE0AF;</i> Factory</h4>
+                        <div class="collection blue-grey-text text-darken-3">
+                          <a href="#!" class="collection-item active blue-grey white-text">Plant 5/6</a>
+                          <a href="#!" class="collection-item">Head Office</a>
+                          <a href="#!" class="collection-item">Hub</a>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+                      </div>
+                    </div>
+                    <div class="navbar-fixed">
+                        <nav>
+                            <div class="nav-wrapper blue-grey">
+                                <ul>
+                                <li><a href="#" data-activates="mobile-demo" class="button-collapse blue-grey darken-1 "><i class="material-icons">&#xE5D2;</i></a></li>
+                                <li><a href="#" data-activates="mobile-demo" class="button-collapse blue-grey darken-1 ">e-Factory</a></li>
+                                </ul>
+                                <ul class="left hide-on-med-and-down">
+                                  <li class="blue-grey darken-1"><a href="#" class="menu waves-effect waves-light"><i class="material-icons left">&#xE5D2;</i> e-Factory</a></li>
+                                </ul>
+                                <ul class="right">
+                                    <li>
+                                        <a class="tooltipped modal-trigger" data-position="left" data-delay="50" data-tooltip="Factory" href="#factoryModal"><i class="material-icons">&#xE0AF;</i></a>
+                                    </li>
+                                </ul> 
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="">
+                      <div class="row animated fadeInUp" ng-repeat="line in prodLines">
+                        <div class="col s12">
+                          <div class="card white hoverable">
+                            <div class="card-content">
+                              <span class="card-title flow-text">{{ line.name }}</span>
+                                <blockquote class="{{line.status == 'RUNNING' ? 'running' : 
+                                                      line.status == 'RUNNING_WITH_ERRORS' ? 'running-errors' :
+                                                      line.status == 'TEST' ? 'test' : 'test-errors'}} flow-text">
+                                <p><h3 class="flow-text">{{ line.status }}</h3></p>
+                              </blockquote>
+                              <div class="row hide-on-small-only">
+                                  <div class="col m4">
+                                      <ul class="collection">
+                                          <li class="collection-item avatar">
+                                            <i class="material-icons circle light-green darken-3">&#xE84F;</i>
+                                            <span class="title">Account</span>
+                                            <p class="flow-text">{{ line.currentProductionVendor }}
+                                            </p>
+                                          </li>
+                                      </ul>
+                                  </div>
+                                  <div class="col m4">
+                                      <ul class="collection">
+                                          <li class="collection-item avatar">
+                                            <i class="material-icons circle light-blue darken-3">&#xE870;</i>
+                                            <span class="title">Model</span>
+                                            <p class="flow-text">{{ line.currentProductionModel }}
+                                            </p>
+                                          </li>
+                                      </ul>
+                                  </div>
+                                  <div class="col m4">
+                                      <ul class="collection">
+                                          <li class="collection-item avatar">
+                                            <i class="material-icons circle orange darken-3">&#xE6DF;</i>
+                                            <span class="title">Efficiency</span>
+                                            <p class="flow-text">{{ line.efficiencyPercentage }} %
+                                            </p>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                              <div class="row hide-on-med-and-up">
+                                      <ul class="collection col s12">
+                                          <li class="collection-item avatar">
+                                            <i class="material-icons circle light-green darken-3">&#xE84F;</i>
+                                            <span class="title">Account</span>
+                                            <p class="flow-text">{{ line.currentProductionVendor }}
+                                            </p>
+                                          </li>
+                                          <li class="collection-item avatar">
+                                            <i class="material-icons circle light-blue darken-3">&#xE870;</i>
+                                            <span class="title">Model</span>
+                                            <p class="flow-text">{{ line.currentProductionModel }}
+                                            </p>
+                                          </li>
+                                          <li class="collection-item avatar">
+                                            <i class="material-icons circle orange darken-3">&#xE6DF;</i>
+                                            <span class="title">Efficiency</span>
+                                            <p class="flow-text">{{ line.efficiencyPercentage }} %
+                                            </p>
+                                          </li>
+                                      </ul>
+                              </div>
+                            </div>
+                            <div class="card-action blue-grey lighten-5 right-align">
+                              <a class="viewmore" href="#">View More</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> 
+                </div>   
+                    <div class="fixed-action-btn">
+                        <a class="btn tooltipped btn-floating btn-large waves-effect waves-light blue-grey right animated zoomIn"
+                        data-position="top" data-delay="50" data-tooltip="Filter"><i class="material-icons">&#xE5D3;</i></a>
+                    </div>
+    
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.jsonp.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
@@ -123,14 +188,13 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-              $('.button-collapse').sideNav();
+            $('.button-collapse').sideNav();
+            $('.modal-trigger').leanModal();
             $('.tooltipped').tooltip({delay: 50});
 
             $('.menu').click(function(){
                $('.button-collapse').sideNav('show');
             });
-
-          app.initialize();
         });
     </script>
     <script>

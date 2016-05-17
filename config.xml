@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.ionics-ems.ef" version="1.0.0">
+<widget id="com.ionics_ems.ef" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" version="1.0.0">
   <name>iems_ef</name>
   <description>Ionics EMS, INC. Expert Factory</description>
   <author href="http://ionics-ems.com/" email="franz.delomen@ionics-ems.com">Ionics IT Team</author>

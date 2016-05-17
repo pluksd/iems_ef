@@ -39,3 +39,27 @@ footer{
 .wrapper{
 	min-height: 100%;
 }
+
+blockquote.running{ border-left: 5px solid  #5cb85c;}
+
+blockquote.running-errors{border-left: 5px solid  #F89406;}
+
+blockquote.test{border-left: 5px solid #0088CC; }
+
+blockquote.test-errors{border-left: 5px solid #F89406;}
+
+blockquote.conversion{border-left: 5px solid #0088CC; }
+
+blockquote.maintenance{border-left: 5px solid #0088CC; }
+
+blockquote.shutdown{border-left: 5px solid  #BD362F; }
+
+blockquote.material-downtime{border-left: 5px solid #F89406;}
+
+blockquote.inventory{border-left: 5px solid #0088CC; }
+
+blockquote.breaktime{border-left: 5px solid #F0D369;}
+
+blockquote.idle{border-left: 5px solid #0088CC; }
+
+blockquote.repair{border-left: 5px solid #BD362F; }
